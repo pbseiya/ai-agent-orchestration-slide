@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เปรียบเทียบ AI Agent Orchestration : OMX vs OMO vs OMC</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/black.css">
+<style>
+.reveal { font-family: 'Sarabun', 'Kanit', sans-serif; }
+.reveal h1, .reveal h2, .reveal h3 { font-family: 'Kanit', sans-serif; text-transform: none; }
+.reveal .slides section { text-align: left; }
+.reveal table { font-size: 0.5em; width: 100%; }
+.reveal table th, .reveal table td { padding: 8px; border-bottom: 1px solid #555; }
+.reveal table th { background: rgba(255,255,255,0.1); }
+.reveal code { font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; }
+.audio-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100;
+  background: rgba(0,0,0,0.85); padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 10px; border: 1px solid #333; }
+.audio-bar button { background: #4CAF50; border: none; color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px; }
+.audio-bar button:hover { background: #45a049; }
+.slide-num { color: #aaa; font-size: 14px; }
+.reveal pre { font-size: 0.4em; background: #1a1a1a; padding: 15px; border-radius: 8px; }
+.highlight-green { color: #4CAF50; }
+.highlight-gold { color: #FFD700; }
+.highlight-blue { color: #87CEEB; }
+.highlight-red { color: #f44336; }
+.agent-card { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin: 8px 0; border-left: 3px solid #4CAF50; }
+.warn-card { background: rgba(244,67,54,0.08); padding: 12px; border-radius: 8px; margin: 8px 0; border-left: 3px solid #f44336; }
+.fact-card { background: rgba(76,175,80,0.08); padding: 12px; border-radius: 8px; margin: 8px 0; border-left: 3px solid #4CAF50; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- Slide 1: Title -->
+<section data-audio="audio/slide-01.mp3">
+  <h1 style="font-size:1.5em;">เปรียบเทียบ AI Agent Orchestration</h1>
+  <h2 style="color:#4CAF50; font-size:1.1em;">OMX vs OMO vs OMC — ข้อเท็จจริงจาก Tavily Fact-Check</h2>
+  <ul style="margin-top:30px; font-size:0.75em;">
+    <li>ที่มาที่ไปและวันที่ publish จริงของแต่ละตัว</li>
+    <li>จุดเด่น / จุดด้อยแบบไม่โฆษณาเกินจริง</li>
+    <li>ข้อผิดพลาดที่พบในข้อมูลทั่วไป</li>
+    <li>เลือกใช้ตัวไหน เมื่อไหร่</li>
+  </ul>
+  <p style="margin-top:40px; font-size:0.7em; color:#888;">เลื่อนด้วยลูกศร ← → | คลิก เล่นเสียงบรรยาย</p>
+</section>
+
+<!-- Slide 2: Origins -->
+<section data-audio="audio/slide-02.mp3">
+  <h2>ที่มาที่ไป — ใครสร้าง เมื่อไหร่</h2>
+  <div class="agent-card">
+    <p><strong class="highlight-green">OMX (Oh My Codex)</strong></p>
+    <p style="font-size:0.75em; margin:0;">Repo: Yeachan-Heo/oh-my-codex | License: MIT</p>
+    <p style="font-size:0.75em; margin:0;">เริ่มต้น: ~มี.ค. 2026 (v0.10.0) | ล่าสุด: <strong>v0.16.0 (พ.ค. 2026)</strong></p>
+    <p style="font-size:0.75em; margin:0;">คำขวัญ: "Like oh-my-zsh, but for Codex" — workflow + orchestration layer บน Codex CLI</p>
+  </div>
+  <div class="agent-card">
+    <p><strong class="highlight-green">OMO (Oh My OpenAgent)</strong> — เดิมชื่อ oh-my-opencode</p>
+    <p style="font-size:0.75em; margin:0;">Repo: code-yeongyu/oh-my-openagent | License: MIT (based on OpenCode)</p>
+    <p style="font-size:0.75em; margin:0;">เริ่มต้น: ~ธ.ค. 2025 | ล่าสุด: <strong>v3.17.15 (พ.ค. 2026)</strong></p>
+    <p style="font-size:0.75em; margin:0;">คำขวัญ: "Not locked to Claude. Not locked to OpenAI. Not locked to anyone."</p>
+  </div>
+  <div class="agent-card">
+    <p><strong class="highlight-green">OMC (Oh My Claude / oh-my-claudecode)</strong></p>
+    <p style="font-size:0.75em; margin:0;">Repo: Yeachan-Heo/oh-my-claudecode | License: MIT (based on OpenCode)</p>
+    <p style="font-size:0.75em; margin:0;">เริ่มต้น: ~ม.ค. 2026 | ล่าสุด: <strong>~v4.13.6 (พ.ค. 2026)</strong></p>
+    <p style="font-size:0.75em; margin:0;">คำขวัญ: Port ของ OMO มาใช้กับ Claude Code โดยเฉพาะ เน้น LSP + Claude ecosystem</p>
+  </div>
+</section>
+
+<!-- Slide 3: What is OMX -->
+<section data-audio="audio/slide-03.mp3">
+  <h2>OMX คืออะไร?</h2>
+  <p style="font-size:0.82em;">OMX ไม่ได้แทนที่ Codex CLI — แต่เป็น <strong>orchestration layer</strong> ที่ครอบบน Codex CLI โดยตรง</p>
+  <ul style="font-size:0.78em;">
+    <li><strong class="highlight-gold">Workflow 4 ขั้นตอน:</strong> <code>$deep-interview → $ralplan → $ralph / $team</code></li>
+    <li><strong class="highlight-gold">Team runtime:</strong> ใช้ tmux + git worktrees สร้าง parallel workers แยกกันทำงาน</li>
+    <li><strong class="highlight-gold">Persistent memory:</strong> โฟลเดอร์ <code>.omx/</code> เก็บ plans, logs, memory — รอดจาก context pruning</li>
+    <li><strong class="highlight-gold">Native hooks:</strong> <code>PreToolUse / PostToolUse</code> ผ่าน <code>.codex/hooks.json</code> โดยตรง</li>
+    <li><strong class="highlight-gold">HUD monitor:</strong> <code>omx hud --watch</code> ดูสถานะ session แบบ real-time</li>
+    <li><strong class="highlight-gold">33 skills + 36 workflow skills</strong> สำหรับ task ประเภทต่างๆ</li>
+  </ul>
+  <p style="font-size:0.72em; color:#aaa; margin-top:15px;">Execution engine หลักคือ Codex (GPT) — Claude/Gemini ใช้เป็น worker รองเท่านั้น</p>
+</section>
+
+<!-- Slide 4: What is OMO -->
+<section data-audio="audio/slide-04.mp3">
+  <h2>OMO คืออะไร?</h2>
+  <p style="font-size:0.82em;">OMO เป็น <strong>multi-model agent orchestration harness</strong> สำหรับ OpenCode แปลง agent เดี่ยวให้เป็นทีมพัฒนา</p>
+  <ul style="font-size:0.78em;">
+    <li><strong class="highlight-gold">11 specialized agents:</strong> Sisyphus (orchestrator), Hephaestus (deep worker), Oracle (architect), Librarian, Explore, Multimodal Looker...</li>
+    <li><strong class="highlight-gold">Multi-provider แท้จริง:</strong> ใช้ Claude, GPT, Gemini, Grok, MiniMax, local models ได้พร้อมกันในระบบเดียว</li>
+    <li><strong class="highlight-gold">LSP + AST tools:</strong> rename, goto-definition, diagnostics, AST-aware code search — IDE precision ที่ CLI ทั่วไปไม่มี</li>
+    <li><strong class="highlight-gold">IntentGate:</strong> วิเคราะห์ intent จริงก่อนทำงาน ลดการเข้าใจผิด</li>
+    <li><strong class="highlight-gold">Claude Code Compatible:</strong> รองรับ hooks, skills, agents, MCPs ของ Claude Code ecosystem</li>
+    <li><strong class="highlight-gold">Discipline enforcement:</strong> Todo enforcer, comment checker, Ralph Loop — ไม่ให้ agent หยุดก่อนเสร็จ</li>
+  </ul>
+</section>
+
+<!-- Slide 5: What is OMC -->
+<section data-audio="audio/slide-05.mp3">
+  <h2>OMC คืออะไร?</h2>
+  <p style="font-size:0.82em;">OMC คือการ <strong>port คอนเซปต์ OMO มาใช้กับ Claude Code</strong> โดยเฉพาะ — เน้น LSP + Claude ecosystem</p>
+  <ul style="font-size:0.78em;">
+    <li><strong class="highlight-gold">LSP integration เต็มรูปแบบ:</strong> 11 tools (hover, goto definition, find references, document symbols, diagnostics, rename, code actions)</li>
+    <li><strong class="highlight-gold">ast-grep integration:</strong> structural code search/replace แบบ precision สูง</li>
+    <li><strong class="highlight-gold">7 slash commands:</strong> <code>/sisyphus</code>, <code>/ultrawork</code>, <code>/deepsearch</code>, <code>/analyze</code>, <code>/plan</code>, <code>/review</code></li>
+    <li><strong class="highlight-gold">Claude Code plugin marketplace:</strong> ติดตั้งผ่าน plugin marketplace ของ Claude Code ได้</li>
+    <li><strong class="highlight-gold">Magic keywords:</strong> <code>ultrawork</code>, <code>search</code>, <code>analyze</code> เรียก workflow ทันที</li>
+    <li><strong class="highlight-gold">Model matching:</strong> แต่ละ agent จับคู่กับ Claude model (Opus → architect, Sonnet → librarian, Haiku → explore)</li>
+  </ul>
+  <p style="font-size:0.72em; color:#f44336; margin-top:10px;">⚠️ Lock ใน Claude ecosystem อย่างเดียว — ไม่สามารถใช้ model ค่ายอื่นได้</p>
+</section>
+
+<!-- Slide 6: Comparison Table -->
+<section data-audio="audio/slide-06.mp3">
+  <h2>ตารางเปรียบเทียบข้อเท็จจริง</h2>
+  <table>
+    <thead>
+      <tr><th>Aspect</th><th>OMX</th><th>OMO</th><th>OMC</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>ผู้สร้าง</td><td>Yeachan Heo</td><td>code-yeongyu</td><td>Yeachan Heo</td></tr>
+      <tr><td>Base platform</td><td>OpenAI Codex CLI</td><td>OpenCode</td><td>Claude Code</td></tr>
+      <tr><td>โมเดล</td><td>หลัก Codex (GPT)<br/>Claude/Gemini = worker</td><td>ทุกค่ายพร้อมกัน<br/>(Claude, GPT, Gemini, Grok...)</td><td>Claude model อย่างเดียว<br/>(Opus, Sonnet, Haiku)</td></tr>
+      <tr><td>Specialized agents</td><td>33 prompts + 36 skills</td><td>11 agents (Sisyphus, Hephaestus, Oracle...)</td><td>10 agents (port จาก OMO)</td></tr>
+      <tr><td>Multi-agent execution</td><td>tmux + git worktrees</td><td>Background agents parallel + discipline</td><td>Team-based บน Claude Code</td></tr>
+      <tr><td>LSP / IDE precision</td><td>ไม่มี (เน้น CLI)</td><td>เต็มระบบ (LSP + AST)</td><td>เต็มระบบ (11 LSP tools + ast-grep)</td></tr>
+      <tr><td>Hooks / Extensibility</td><td>Native Codex hooks</td><td>40+ hooks, skills, MCPs</td><td>Claude Code hooks + plugin</td></tr>
+      <tr><td>License</td><td>MIT</td><td>MIT</td><td>MIT</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Slide 7: OMX Pros/Cons -->
+<section data-audio="audio/slide-07.mp3">
+  <h2>OMX — จุดเด่น / จุดด้อย</h2>
+  <div class="fact-card">
+    <p style="margin:0; font-weight:bold; color:#4CAF50;">✅ จุดเด่น</p>
+    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+      <li>Workflow เป็นระบบ: deep-interview → ralplan → ralph/team ลดความสับสน</li>
+      <li>Team runtime ด้วย tmux + git worktrees — parallel ได้จริง ไม่ชนกัน</li>
+      <li>Persistent state ใน <code>.omx/</code> — รอดจาก context pruning ของ Codex</li>
+      <li>Native hooks ผ่าน <code>.codex/hooks.json</code> โดยตรง ไม่ต้องใช้ shim นอก</li>
+      <li>HUD monitor ดูสถานะ real-time</li>
+      <li>ไม่แยกจาก Codex CLI — ใช้ execution engine หลักตลอด</li>
+    </ul>
+  </div>
+  <div class="warn-card">
+    <p style="margin:0; font-weight:bold; color:#f44336;">❌ จุดด้อย</p>
+    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+      <li>Setup overhead สูง — planning gate เพิ่มขึ้น งานเล็กๆ อาจช้ากว่า raw Codex</li>
+      <li>ผูกติด Codex CLI evolution — เช่น Codex v0.117.0 ลบ custom /prompts ต้องแก้ตาม</li>
+      <li>ต้องใช้ tmux — ถ้าไม่ชินอาจงง</li>
+      <li>Agent ไม่หลากหลายเท่า OMO — เน้น Codex เป็นหลัก</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 8: OMO Pros/Cons -->
+<section data-audio="audio/slide-08.mp3">
+  <h2>OMO — จุดเด่น / จุดด้อย</h2>
+  <div class="fact-card">
+    <p style="margin:0; font-weight:bold; color:#4CAF50;">✅ จุดเด่น</p>
+    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+      <li>Multi-model แท้จริง — ไม่ lock ใคร ใช้ทุกค่ายพร้อมกันในระบบเดียว</li>
+      <li>11 specialized agents ที่เลือก model ตามจุดเด่นของตัวเอง</li>
+      <li>LSP + AST tools — IDE precision ที่ vanilla CLI ไม่มี</li>
+      <li>IntentGate วิเคราะห์ intent จริงก่อนทำงาน</li>
+      <li>Claude Code Compatible — ใช้ hooks/skills/MCP ของ Claude ได้</li>
+      <li>Discipline enforcement — agent ไม่หยุดก่อนเสร็จ</li>
+    </ul>
+  </div>
+  <div class="warn-card">
+    <p style="margin:0; font-weight:bold; color:#f44336;">❌ จุดด้อย</p>
+    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+      <li>Complexity สูง — ส่วนประกอบเยอะ ต้องเรียนรู้เยอะกว่า</li>
+      <li>พึ่งพา OpenCode — ต้องมี OpenCode เป็น base ก่อน</li>
+      <li>Configuration overhead — ตั้งค่า provider หลายตัวในขั้นตอนติดตั้ง</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 9: OMC Pros/Cons -->
+<section data-audio="audio/slide-09.mp3">
+  <h2>OMC — จุดเด่น / จุดด้อย</h2>
+  <div class="fact-card">
+    <p style="margin:0; font-weight:bold; color:#4CAF50;">✅ จุดเด่น</p>
+    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+      <li>LSP integration เต็มรูปแบบ — 11 tools + ast-grep precision สูง</li>
+      <li>7 slash commands สำเร็จรูป พร้อม magic keywords</li>
+      <li>ติดตั้งผ่าน Claude Code plugin marketplace ได้</li>
+      <li>Model matching อัตโนมัติ — Opus → architect, Sonnet → librarian, Haiku → explore</li>
+    </ul>
+  </div>
+  <div class="warn-card">
+    <p style="margin:0; font-weight:bold; color:#f44336;">❌ จุดด้อย</p>
+    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+      <li>Lock ใน Claude ecosystem — ใช้ได้เฉพาะ Claude Code</li>
+      <li>พึ่งพา Claude Code evolution — Anthropic เคย mass block 3rd party tools (ม.ค. 2026)</li>
+      <li>ใหม่กว่า OMO — ฟีเจอร์บางส่วนตามหลัง OMO เพราะเป็น port มา</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 10: Misconceptions -->
+<section data-audio="audio/slide-10.mp3">
+  <h2>ข้อผิดพลาดที่พบบ่อยในข้อมูลทั่วไป</h2>
+  <div class="warn-card">
+    <p style="margin:0; font-weight:bold; color:#f44336;">❌ ผิด 1: "OMX เน้น System & Terminal ส่วน OMO/OMC เน้น Application Development"</p>
+    <p style="font-size:0.78em; margin:5px 0 0 0;">✅ จริง: ทั้งสามตัวเป็น <strong>coding agent orchestration tools</strong> ทำได้ทั้ง system และ software dev ไม่ได้แบ่งชัดเจนตามนั้น</p>
+  </div>
+  <div class="warn-card">
+    <p style="margin:0; font-weight:bold; color:#f44336;">❌ ผิด 2: "OMX มี /session และ /compact เป็น slash commands"</p>
+    <p style="font-size:0.78em; margin:5px 0 0 0;">✅ จริง: OMX ใช้ <strong>CLI subcommands</strong> เช่น <code>omx session</code> ไม่ใช่ slash commands แบบ chat</p>
+  </div>
+  <div class="warn-card">
+    <p style="margin:0; font-weight:bold; color:#f44336;">❌ ผิด 3: "Codex CLI ดั้งเดิมแค่เขียนคำสั่งให้ดู ไม่รันคำสั่งได้"</p>
+    <p style="font-size:0.78em; margin:5px 0 0 0;">✅ จริง: Codex CLI มี <strong>3 approval modes</strong> (suggest, auto-edit, full-auto) รันคำสั่งได้มาก่อนแล้ว</p>
+  </div>
+  <div class="warn-card">
+    <p style="margin:0; font-weight:bold; color:#f44336;">❌ ผิด 4: "OMC คือ Oh My Claude"</p>
+    <p style="font-size:0.78em; margin:5px 0 0 0;">✅ จริง: ชื่อเต็มคือ <strong>oh-my-claudecode</strong> ไม่ใช่ oh-my-claude ธรรมดา (มี repo อื่นที่ใช้ชื่อคล้ายกัน)</p>
+  </div>
+</section>
+
+<!-- Slide 11: When to use -->
+<section data-audio="audio/slide-11.mp3">
+  <h2>เลือกใช้ตัวไหน เมื่อไหร่</h2>
+  <div class="agent-card">
+    <p><strong class="highlight-green">เลือก OMX เมื่อ:</strong></p>
+    <ul style="font-size:0.78em; margin:0;">
+      <li>คุณชอบ Codex CLI อยู่แล้ว ต้องการ structure + team parallel + persistent memory</li>
+      <li>ไม่ต้องการเปลี่ยน tool หลัก — ใช้ Codex ต่อได้เลย</li>
+      <li>ต้องการ HUD monitor ดูสถานะ real-time</li>
+    </ul>
+  </div>
+  <div class="agent-card">
+    <p><strong class="highlight-green">เลือก OMO เมื่อ:</strong></p>
+    <ul style="font-size:0.78em; margin:0;">
+      <li>คุณใช้ OpenCode ต้องการ multi-model ที่ไม่ lock ใคร</li>
+      <li>ต้องการ specialized agents + LSP tools + discipline enforcement</li>
+      <li>ต้องการใช้ hooks/skills/MCP ของ Claude Code ecosystem ได้ด้วย</li>
+    </ul>
+  </div>
+  <div class="agent-card">
+    <p><strong class="highlight-green">เลือก OMC เมื่อ:</strong></p>
+    <ul style="font-size:0.78em; margin:0;">
+      <li>คุณใช้ Claude Code เป็นหลัก ต้องการ LSP integration เต็มรูปแบบ</li>
+      <li>ต้องการ slash commands + magic keywords สำเร็จรูป</li>
+      <li>ติดตั้งผ่าน Claude Code plugin marketplace ได้สะดวก</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 12: References -->
+<section data-audio="audio/slide-12.mp3">
+  <h2>แหล่งอ้างอิง</h2>
+  <ul style="font-size:0.72em;">
+    <li>GitHub: <strong>Yeachan-Heo/oh-my-codex</strong> — github.com/Yeachan-Heo/oh-my-codex</li>
+    <li>GitHub: <strong>code-yeongyu/oh-my-openagent</strong> — github.com/code-yeongyu/oh-my-openagent</li>
+    <li>GitHub: <strong>Yeachan-Heo/oh-my-claudecode</strong> — github.com/yeachan-heo/oh-my-claudecode</li>
+    <li>Verdent AI Guide — verdent.ai/guides/what-is-oh-my-codex-omx</li>
+    <li>Vibe Coding Hub Review — vibecodinghub.org/tools/oh-my-codex</li>
+    <li>a2a-mcp.org Blog — a2a-mcp.org/blog/what-is-oh-my-openagent</li>
+    <li>LinkedIn comparison post (Muhammad Khan)</li>
+    <li>Nimbalyst — nimbalyst.com/blog/claude-code-vs-codex-vs-opencode-definitive-comparison</li>
+  </ul>
+  <p style="margin-top:20px; font-size:0.7em; color:#888;">ข้อมูลนี้ถูก fact-check ด้วย Tavily Search API (พ.ค. 2026)</p>
+</section>
+
+</div>
+</div>
+
+<div class="audio-bar">
+  <button id="playBtn" onclick="toggleAudio()">▶ เล่นเสียง</button>
+  <span class="slide-num">สไลด์ <span id="currentSlide">1</span> / <span id="totalSlide">12</span></span>
+  <audio id="player" preload="none"></audio>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: false,
+  transition: 'slide',
+  width: 1280,
+  height: 720
+});
+
+let isPlaying = false;
+const player = document.getElementById('player');
+const playBtn = document.getElementById('playBtn');
+const currentSpan = document.getElementById('currentSlide');
+const totalSpan = document.getElementById('totalSlide');
+
+function updateSlideNum() {
+  const indices = Reveal.getIndices();
+  currentSpan.textContent = indices.h + 1;
+}
+
+Reveal.on('slidechanged', function(event) {
+  updateSlideNum();
+  const section = event.currentSlide;
+  const audioPath = section.getAttribute('data-audio');
+  if (audioPath) {
+    player.src = audioPath;
+    player.load();
+    isPlaying = false;
+    playBtn.textContent = '▶ เล่นเสียง';
+  }
+});
+
+function toggleAudio() {
+  if (!player.src || player.src === window.location.href) {
+    const slide = Reveal.getCurrentSlide();
+    const audioPath = slide.getAttribute('data-audio');
+    if (audioPath) { player.src = audioPath; player.load(); }
+  }
+  if (player.paused) {
+    player.play();
+    isPlaying = true;
+    playBtn.textContent = '⏸ หยุด';
+  } else {
+    player.pause();
+    isPlaying = false;
+    playBtn.textContent = '▶ เล่นเสียง';
+  }
+}
+
+player.addEventListener('ended', function() {
+  isPlaying = false;
+  playBtn.textContent = '▶ เล่นเสียง';
+});
+
+// Initialize counts
+const total = document.querySelectorAll('.slides > section').length;
+totalSpan.textContent = total;
+updateSlideNum();
+
+// Set audio for first slide
+const firstSlide = document.querySelector('.slides > section');
+if (firstSlide) {
+  const firstAudio = firstSlide.getAttribute('data-audio');
+  if (firstAudio) { player.src = firstAudio; player.load(); }
+}
+</script>
+</body>
+</html>
