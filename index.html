@@ -308,8 +308,14 @@ Reveal.on('slidechanged', function(event) {
   if (audioPath) {
     player.src = audioPath;
     player.load();
-    isPlaying = false;
-    playBtn.textContent = '▶ เล่นเสียง';
+    player.play().then(function() {
+      isPlaying = true;
+      playBtn.textContent = '⏸ หยุด';
+    }).catch(function(err) {
+      // Auto-play blocked by browser policy, keep button ready
+      isPlaying = false;
+      playBtn.textContent = '▶ เล่นเสียง';
+    });
   }
 });
 
