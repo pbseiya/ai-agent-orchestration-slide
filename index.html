@@ -9,7 +9,7 @@
 <style>
 .reveal { font-family: 'Sarabun', 'Kanit', sans-serif; }
 .reveal h1, .reveal h2, .reveal h3 { font-family: 'Kanit', sans-serif; text-transform: none; }
-.reveal .slides section { text-align: left; }
+.reveal .slides section { text-align: left; padding-bottom: 100px !important; }
 .reveal table { font-size: 0.5em; width: 100%; }
 .reveal table th, .reveal table td { padding: 8px; border-bottom: 1px solid #555; }
 .reveal table th { background: rgba(255,255,255,0.1); }
@@ -24,9 +24,9 @@
 .highlight-gold { color: #FFD700; }
 .highlight-blue { color: #87CEEB; }
 .highlight-red { color: #f44336; }
-.agent-card { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin: 8px 0; border-left: 3px solid #4CAF50; }
-.warn-card { background: rgba(244,67,54,0.08); padding: 12px; border-radius: 8px; margin: 8px 0; border-left: 3px solid #f44336; }
-.fact-card { background: rgba(76,175,80,0.08); padding: 12px; border-radius: 8px; margin: 8px 0; border-left: 3px solid #4CAF50; }
+.agent-card { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; margin: 5px 0; border-left: 3px solid #4CAF50; }
+.warn-card { background: rgba(244,67,54,0.08); padding: 6px; border-radius: 6px; margin: 4px 0; border-left: 3px solid #f44336; }
+.fact-card { background: rgba(76,175,80,0.08); padding: 8px; border-radius: 8px; margin: 5px 0; border-left: 3px solid #4CAF50; }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -52,21 +52,21 @@
   <h2>ที่มาที่ไป — ใครสร้าง เมื่อไหร่</h2>
   <div class="agent-card">
     <p><strong class="highlight-green">OMX (Oh My Codex)</strong></p>
-    <p style="font-size:0.75em; margin:0;">Repo: Yeachan-Heo/oh-my-codex | License: MIT</p>
-    <p style="font-size:0.75em; margin:0;">เริ่มต้น: ~มี.ค. 2026 (v0.10.0) | ล่าสุด: <strong>v0.16.0 (พ.ค. 2026)</strong></p>
-    <p style="font-size:0.75em; margin:0;">คำขวัญ: "Like oh-my-zsh, but for Codex" — workflow + orchestration layer บน Codex CLI</p>
+    <p style="font-size:0.7em; margin:0;">Repo: Yeachan-Heo/oh-my-codex | License: MIT</p>
+    <p style="font-size:0.7em; margin:0;">เริ่มต้น: ~มี.ค. 2026 (v0.10.0) | ล่าสุด: <strong>v0.16.0 (พ.ค. 2026)</strong></p>
+    <p style="font-size:0.7em; margin:0;">คำขวัญ: "Like oh-my-zsh, but for Codex" — workflow + orchestration layer บน Codex CLI</p>
   </div>
   <div class="agent-card">
     <p><strong class="highlight-green">OMO (Oh My OpenAgent)</strong> — เดิมชื่อ oh-my-opencode</p>
-    <p style="font-size:0.75em; margin:0;">Repo: code-yeongyu/oh-my-openagent | License: MIT (based on OpenCode)</p>
-    <p style="font-size:0.75em; margin:0;">เริ่มต้น: ~ธ.ค. 2025 | ล่าสุด: <strong>v3.17.15 (พ.ค. 2026)</strong></p>
-    <p style="font-size:0.75em; margin:0;">คำขวัญ: "Not locked to Claude. Not locked to OpenAI. Not locked to anyone."</p>
+    <p style="font-size:0.7em; margin:0;">Repo: code-yeongyu/oh-my-openagent | License: MIT (based on OpenCode)</p>
+    <p style="font-size:0.7em; margin:0;">เริ่มต้น: ~ธ.ค. 2025 | ล่าสุด: <strong>v3.17.15 (พ.ค. 2026)</strong></p>
+    <p style="font-size:0.7em; margin:0;">คำขวัญ: "Not locked to Claude. Not locked to OpenAI. Not locked to anyone."</p>
   </div>
   <div class="agent-card">
     <p><strong class="highlight-green">OMC (Oh My Claude / oh-my-claudecode)</strong></p>
-    <p style="font-size:0.75em; margin:0;">Repo: Yeachan-Heo/oh-my-claudecode | License: MIT (based on OpenCode)</p>
-    <p style="font-size:0.75em; margin:0;">เริ่มต้น: ~ม.ค. 2026 | ล่าสุด: <strong>~v4.13.6 (พ.ค. 2026)</strong></p>
-    <p style="font-size:0.75em; margin:0;">คำขวัญ: Port ของ OMO มาใช้กับ Claude Code โดยเฉพาะ เน้น LSP + Claude ecosystem</p>
+    <p style="font-size:0.7em; margin:0;">Repo: Yeachan-Heo/oh-my-claudecode | License: MIT (based on OpenCode)</p>
+    <p style="font-size:0.7em; margin:0;">เริ่มต้น: ~ม.ค. 2026 | ล่าสุด: <strong>~v4.13.6 (พ.ค. 2026)</strong></p>
+    <p style="font-size:0.7em; margin:0;">คำขวัญ: Port ของ OMO มาใช้กับ Claude Code โดยเฉพาะ เน้น LSP + Claude ecosystem</p>
   </div>
 </section>
 
@@ -74,7 +74,7 @@
 <section data-audio="audio/slide-03.mp3">
   <h2>OMX คืออะไร?</h2>
   <p style="font-size:0.82em;">OMX ไม่ได้แทนที่ Codex CLI — แต่เป็น <strong>orchestration layer</strong> ที่ครอบบน Codex CLI โดยตรง</p>
-  <ul style="font-size:0.78em;">
+  <ul style="font-size:0.72em;">
     <li><strong class="highlight-gold">Workflow 4 ขั้นตอน:</strong> <code>$deep-interview → $ralplan → $ralph / $team</code></li>
     <li><strong class="highlight-gold">Team runtime:</strong> ใช้ tmux + git worktrees สร้าง parallel workers แยกกันทำงาน</li>
     <li><strong class="highlight-gold">Persistent memory:</strong> โฟลเดอร์ <code>.omx/</code> เก็บ plans, logs, memory — รอดจาก context pruning</li>
@@ -89,7 +89,7 @@
 <section data-audio="audio/slide-04.mp3">
   <h2>OMO คืออะไร?</h2>
   <p style="font-size:0.82em;">OMO เป็น <strong>multi-model agent orchestration harness</strong> สำหรับ OpenCode แปลง agent เดี่ยวให้เป็นทีมพัฒนา</p>
-  <ul style="font-size:0.78em;">
+  <ul style="font-size:0.72em;">
     <li><strong class="highlight-gold">11 specialized agents:</strong> Sisyphus (orchestrator), Hephaestus (deep worker), Oracle (architect), Librarian, Explore, Multimodal Looker...</li>
     <li><strong class="highlight-gold">Multi-provider แท้จริง:</strong> ใช้ Claude, GPT, Gemini, Grok, MiniMax, local models ได้พร้อมกันในระบบเดียว</li>
     <li><strong class="highlight-gold">LSP + AST tools:</strong> rename, goto-definition, diagnostics, AST-aware code search — IDE precision ที่ CLI ทั่วไปไม่มี</li>
@@ -103,7 +103,7 @@
 <section data-audio="audio/slide-05.mp3">
   <h2>OMC คืออะไร?</h2>
   <p style="font-size:0.82em;">OMC คือการ <strong>port คอนเซปต์ OMO มาใช้กับ Claude Code</strong> โดยเฉพาะ — เน้น LSP + Claude ecosystem</p>
-  <ul style="font-size:0.78em;">
+  <ul style="font-size:0.72em;">
     <li><strong class="highlight-gold">LSP integration เต็มรูปแบบ:</strong> 11 tools (hover, goto definition, find references, document symbols, diagnostics, rename, code actions)</li>
     <li><strong class="highlight-gold">ast-grep integration:</strong> structural code search/replace แบบ precision สูง</li>
     <li><strong class="highlight-gold">7 slash commands:</strong> <code>/sisyphus</code>, <code>/ultrawork</code>, <code>/deepsearch</code>, <code>/analyze</code>, <code>/plan</code>, <code>/review</code></li>
@@ -139,7 +139,7 @@
   <h2>OMX — จุดเด่น / จุดด้อย</h2>
   <div class="fact-card">
     <p style="margin:0; font-weight:bold; color:#4CAF50;">✅ จุดเด่น</p>
-    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+    <ul style="font-size:0.7em; margin:8px 0 0 0;">
       <li>Workflow เป็นระบบ: deep-interview → ralplan → ralph/team ลดความสับสน</li>
       <li>Team runtime ด้วย tmux + git worktrees — parallel ได้จริง ไม่ชนกัน</li>
       <li>Persistent state ใน <code>.omx/</code> — รอดจาก context pruning ของ Codex</li>
@@ -150,7 +150,7 @@
   </div>
   <div class="warn-card">
     <p style="margin:0; font-weight:bold; color:#f44336;">❌ จุดด้อย</p>
-    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+    <ul style="font-size:0.7em; margin:8px 0 0 0;">
       <li>Setup overhead สูง — planning gate เพิ่มขึ้น งานเล็กๆ อาจช้ากว่า raw Codex</li>
       <li>ผูกติด Codex CLI evolution — เช่น Codex v0.117.0 ลบ custom /prompts ต้องแก้ตาม</li>
       <li>ต้องใช้ tmux — ถ้าไม่ชินอาจงง</li>
@@ -164,7 +164,7 @@
   <h2>OMO — จุดเด่น / จุดด้อย</h2>
   <div class="fact-card">
     <p style="margin:0; font-weight:bold; color:#4CAF50;">✅ จุดเด่น</p>
-    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+    <ul style="font-size:0.7em; margin:8px 0 0 0;">
       <li>Multi-model แท้จริง — ไม่ lock ใคร ใช้ทุกค่ายพร้อมกันในระบบเดียว</li>
       <li>11 specialized agents ที่เลือก model ตามจุดเด่นของตัวเอง</li>
       <li>LSP + AST tools — IDE precision ที่ vanilla CLI ไม่มี</li>
@@ -175,7 +175,7 @@
   </div>
   <div class="warn-card">
     <p style="margin:0; font-weight:bold; color:#f44336;">❌ จุดด้อย</p>
-    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+    <ul style="font-size:0.7em; margin:8px 0 0 0;">
       <li>Complexity สูง — ส่วนประกอบเยอะ ต้องเรียนรู้เยอะกว่า</li>
       <li>พึ่งพา OpenCode — ต้องมี OpenCode เป็น base ก่อน</li>
       <li>Configuration overhead — ตั้งค่า provider หลายตัวในขั้นตอนติดตั้ง</li>
@@ -188,7 +188,7 @@
   <h2>OMC — จุดเด่น / จุดด้อย</h2>
   <div class="fact-card">
     <p style="margin:0; font-weight:bold; color:#4CAF50;">✅ จุดเด่น</p>
-    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+    <ul style="font-size:0.7em; margin:8px 0 0 0;">
       <li>LSP integration เต็มรูปแบบ — 11 tools + ast-grep precision สูง</li>
       <li>7 slash commands สำเร็จรูป พร้อม magic keywords</li>
       <li>ติดตั้งผ่าน Claude Code plugin marketplace ได้</li>
@@ -197,7 +197,7 @@
   </div>
   <div class="warn-card">
     <p style="margin:0; font-weight:bold; color:#f44336;">❌ จุดด้อย</p>
-    <ul style="font-size:0.78em; margin:8px 0 0 0;">
+    <ul style="font-size:0.7em; margin:8px 0 0 0;">
       <li>Lock ใน Claude ecosystem — ใช้ได้เฉพาะ Claude Code</li>
       <li>พึ่งพา Claude Code evolution — Anthropic เคย mass block 3rd party tools (ม.ค. 2026)</li>
       <li>ใหม่กว่า OMO — ฟีเจอร์บางส่วนตามหลัง OMO เพราะเป็น port มา</li>
@@ -209,20 +209,20 @@
 <section data-audio="audio/slide-10.mp3">
   <h2>ข้อผิดพลาดที่พบบ่อยในข้อมูลทั่วไป</h2>
   <div class="warn-card">
-    <p style="margin:0; font-weight:bold; color:#f44336;">❌ ผิด 1: "OMX เน้น System & Terminal ส่วน OMO/OMC เน้น Application Development"</p>
-    <p style="font-size:0.78em; margin:5px 0 0 0;">✅ จริง: ทั้งสามตัวเป็น <strong>coding agent orchestration tools</strong> ทำได้ทั้ง system และ software dev ไม่ได้แบ่งชัดเจนตามนั้น</p>
+    <p style="margin:0; font-weight:bold; color:#f44336; font-size:0.85em;">❌ ผิด 1: "OMX เน้น System & Terminal ส่วน OMO/OMC เน้น Application Development"</p>
+    <p style="font-size:0.72em; margin:5px 0 0 0;">✅ จริง: ทั้งสามตัวเป็น <strong>coding agent orchestration tools</strong> ทำได้ทั้ง system และ software dev ไม่ได้แบ่งชัดเจนตามนั้น</p>
   </div>
   <div class="warn-card">
     <p style="margin:0; font-weight:bold; color:#f44336;">❌ ผิด 2: "OMX มี /session และ /compact เป็น slash commands"</p>
-    <p style="font-size:0.78em; margin:5px 0 0 0;">✅ จริง: OMX ใช้ <strong>CLI subcommands</strong> เช่น <code>omx session</code> ไม่ใช่ slash commands แบบ chat</p>
+    <p style="font-size:0.72em; margin:5px 0 0 0;">✅ จริง: OMX ใช้ <strong>CLI subcommands</strong> เช่น <code>omx session</code> ไม่ใช่ slash commands แบบ chat</p>
   </div>
   <div class="warn-card">
     <p style="margin:0; font-weight:bold; color:#f44336;">❌ ผิด 3: "Codex CLI ดั้งเดิมแค่เขียนคำสั่งให้ดู ไม่รันคำสั่งได้"</p>
-    <p style="font-size:0.78em; margin:5px 0 0 0;">✅ จริง: Codex CLI มี <strong>3 approval modes</strong> (suggest, auto-edit, full-auto) รันคำสั่งได้มาก่อนแล้ว</p>
+    <p style="font-size:0.72em; margin:5px 0 0 0;">✅ จริง: Codex CLI มี <strong>3 approval modes</strong> (suggest, auto-edit, full-auto) รันคำสั่งได้มาก่อนแล้ว</p>
   </div>
   <div class="warn-card">
     <p style="margin:0; font-weight:bold; color:#f44336;">❌ ผิด 4: "OMC คือ Oh My Claude"</p>
-    <p style="font-size:0.78em; margin:5px 0 0 0;">✅ จริง: ชื่อเต็มคือ <strong>oh-my-claudecode</strong> ไม่ใช่ oh-my-claude ธรรมดา (มี repo อื่นที่ใช้ชื่อคล้ายกัน)</p>
+    <p style="font-size:0.72em; margin:5px 0 0 0;">✅ จริง: ชื่อเต็มคือ <strong>oh-my-claudecode</strong> ไม่ใช่ oh-my-claude ธรรมดา (มี repo อื่นที่ใช้ชื่อคล้ายกัน)</p>
   </div>
 </section>
 
@@ -231,7 +231,7 @@
   <h2>เลือกใช้ตัวไหน เมื่อไหร่</h2>
   <div class="agent-card">
     <p><strong class="highlight-green">เลือก OMX เมื่อ:</strong></p>
-    <ul style="font-size:0.78em; margin:0;">
+    <ul style="font-size:0.7em; margin:0;">
       <li>คุณชอบ Codex CLI อยู่แล้ว ต้องการ structure + team parallel + persistent memory</li>
       <li>ไม่ต้องการเปลี่ยน tool หลัก — ใช้ Codex ต่อได้เลย</li>
       <li>ต้องการ HUD monitor ดูสถานะ real-time</li>
@@ -239,7 +239,7 @@
   </div>
   <div class="agent-card">
     <p><strong class="highlight-green">เลือก OMO เมื่อ:</strong></p>
-    <ul style="font-size:0.78em; margin:0;">
+    <ul style="font-size:0.7em; margin:0;">
       <li>คุณใช้ OpenCode ต้องการ multi-model ที่ไม่ lock ใคร</li>
       <li>ต้องการ specialized agents + LSP tools + discipline enforcement</li>
       <li>ต้องการใช้ hooks/skills/MCP ของ Claude Code ecosystem ได้ด้วย</li>
@@ -247,7 +247,7 @@
   </div>
   <div class="agent-card">
     <p><strong class="highlight-green">เลือก OMC เมื่อ:</strong></p>
-    <ul style="font-size:0.78em; margin:0;">
+    <ul style="font-size:0.7em; margin:0;">
       <li>คุณใช้ Claude Code เป็นหลัก ต้องการ LSP integration เต็มรูปแบบ</li>
       <li>ต้องการ slash commands + magic keywords สำเร็จรูป</li>
       <li>ติดตั้งผ่าน Claude Code plugin marketplace ได้สะดวก</li>
@@ -298,7 +298,7 @@ const totalSpan = document.getElementById('totalSlide');
 
 function updateSlideNum() {
   const indices = Reveal.getIndices();
-  currentSpan.textContent = indices.h + 1;
+  currentSpan.textContent = (indices.h !== undefined ? indices.h : 0) + 1;
 }
 
 Reveal.on('slidechanged', function(event) {
